@@ -3,39 +3,55 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace DAL
 {
 	class VaultRepository : IRepository<Vault>
 	{
+		VaultContext db;
+		public VaultRepository()
+		{
+			db = new VaultContext();
+		}
+		public IEnumerable<Vault> GetList()
+		{
+			return db.Vault;
+		}
 		public void Create(Vault item)
 		{
-			throw new NotImplementedException();
+			db.Vault.Add(item);
 		}
-
 		public void Delete(int id)
 		{
-			throw new NotImplementedException();
+			Vault vaulttodelete = db.Vault.Find(id);
+			if (vaulttodelete != null)
+				db.Vault.Remove(vaulttodelete);
 		}
-
-		public void Dispose()
-		{
-			throw new NotImplementedException();
-		}
-
 		public Vault GetItem(int id)
 		{
-			throw new NotImplementedException();
+			return db.Vault.Find(id);
 		}
-
-		public void Save()
-		{
-			throw new NotImplementedException();
-		}
-
 		public void Update(Vault item)
 		{
-			throw new NotImplementedException();
+			db.Entry(item).State = EntityState.Modified;
+		}
+		public void Save()
+		{
+			db.SaveChanges();
+		}
+		private bool disposed = false;
+		public virtual void Dispose(bool disposing)
+		{
+			if (!disposed)
+				if (disposing)
+					db.Dispose();
+			disposed = true;
+		}
+		public void Dispose()
+		{
+			Dispose(true);
+			GC.SuppressFinalize(this);
 		}
 	}
 }
