@@ -9,10 +9,10 @@ namespace DAL
 {
 	class UserRepository : IRepository<Users>
 	{
-		private UsersContext db;
-		public UserRepository()
+		private VaultContext db;
+		public UserRepository(VaultContext context)
 		{
-			db = new UsersContext();
+			db = context;
 		}
 		public IEnumerable<Users> GetList()
 		{
@@ -36,7 +36,7 @@ namespace DAL
 		{
 			db.Entry(item).State = EntityState.Modified;
 		}
-		public void Save()
+		/*public void Save()
 		{
 			db.SaveChanges();
 		}
@@ -52,6 +52,6 @@ namespace DAL
 		{
 			Dispose(true);
 			GC.SuppressFinalize(this);
-		}
+		}*/
 	}
 }

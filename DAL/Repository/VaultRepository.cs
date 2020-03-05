@@ -10,9 +10,9 @@ namespace DAL
 	class VaultRepository : IRepository<Vault>
 	{
 		VaultContext db;
-		public VaultRepository()
+		public VaultRepository(VaultContext context)
 		{
-			db = new VaultContext();
+			db = context;
 		}
 		public IEnumerable<Vault> GetList()
 		{
@@ -36,7 +36,7 @@ namespace DAL
 		{
 			db.Entry(item).State = EntityState.Modified;
 		}
-		public void Save()
+		/*public void Save()
 		{
 			db.SaveChanges();
 		}
@@ -52,6 +52,6 @@ namespace DAL
 		{
 			Dispose(true);
 			GC.SuppressFinalize(this);
-		}
+		}*/
 	}
 }

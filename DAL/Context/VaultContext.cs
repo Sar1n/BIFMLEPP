@@ -13,5 +13,6 @@ namespace DAL
 		{
 		}
 		public DbSet<Vault> Vault { get; set; }
+		public DbSet<Users> Users { get; set; }
 	}
 }
