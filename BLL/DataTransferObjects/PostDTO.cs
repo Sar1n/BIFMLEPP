@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Models
+namespace BLL.DataTransferObjects
 {
-	public class User
+	class PostDTO
 	{
-		public int Id { get; set; }
-		public string Username { get; set; }
+		public string PostUrl { get; set; }
+		public string Description { get; set; }
 	}
 }

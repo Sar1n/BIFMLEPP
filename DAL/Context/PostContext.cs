@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using DAL.Models;
 
-namespace DAL
+namespace DAL.Context
 {
-	class PostContext : DbContext
+	public class PostContext : DbContext
 	{
-		public PostContext() : base("DbConnection")
+		public PostContext(string connectionString) : base("DbConnection")
 		{
 		}
 		public DbSet<Post> Post { get; set; }

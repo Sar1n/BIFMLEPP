@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Models
+namespace BLL.Services
 {
-	public class User
+	interface IAddPost
 	{
-		public int Id { get; set; }
-		public string Username { get; set; }
 	}
 }

@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL.Models;
+using DAL.Context;
+using DAL.Repository;
 
 namespace DAL.UnitOfWork
 {
-	class UnitOfWork : IDisposable
+	public class UnitOfWork : IUnitOfWork
 	{
 		private PostContext db;
 		private UserRepository userRepository;
 		private PostRepository postRepository;
 		private CommentRepository commentRepository;
+		public UnitOfWork(string connectionString)
+		{
+			db = new PostContext(connectionString);
+		}
 		public UserRepository User
 		{
 			get

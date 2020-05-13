@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using DAL.Models;
+using DAL.Context;
 
-namespace DAL
+namespace DAL.Repository
 {
-	class PostRepository : IRepository<Post>
+	public class PostRepository : IRepository<Post>
 	{
 		private PostContext db;
 		public PostRepository(PostContext context)

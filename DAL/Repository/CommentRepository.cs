@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using DAL.Models;
+using DAL.Context;
 
-namespace DAL
+namespace DAL.Repository
 {
-	class CommentRepository : IRepository<Comment>
+	public class CommentRepository : IRepository<Comment>
 	{
 		private PostContext db;
 		public CommentRepository(PostContext context)

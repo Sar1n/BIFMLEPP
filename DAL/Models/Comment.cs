@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace DAL.Models
 {
-	class Comment
+	public class Comment
 	{
 		public int Id { get; set; }
 		public Post Post { get; set; }
