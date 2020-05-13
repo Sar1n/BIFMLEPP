@@ -7,51 +7,34 @@ using System.Data.Entity;
 
 namespace DAL
 {
-	class VaultRepository : IRepository<Vault>
+	class PostRepository : IRepository<Post>
 	{
-		VaultContext db;
-		public VaultRepository(VaultContext context)
+		private PostContext db;
+		public PostRepository(PostContext context)
 		{
 			db = context;
 		}
-		public IEnumerable<Vault> GetList()
+		public IEnumerable<Post> GetList()
 		{
-			return db.Vault;
+			return db.Post;
 		}
-		public void Create(Vault item)
+		public void Create(Post item)
 		{
-			db.Vault.Add(item);
+			db.Post.Add(item);
 		}
 		public void Delete(int id)
 		{
-			Vault vaulttodelete = db.Vault.Find(id);
-			if (vaulttodelete != null)
-				db.Vault.Remove(vaulttodelete);
+			Post posttodelete = db.Post.Find(id);
+			if (posttodelete != null)
+				db.Post.Remove(posttodelete);
 		}
-		public Vault GetItem(int id)
+		public Post GetItem(int id)
 		{
-			return db.Vault.Find(id);
+			return db.Post.Find(id);
 		}
-		public void Update(Vault item)
+		public void Update(Post item)
 		{
 			db.Entry(item).State = EntityState.Modified;
 		}
-		/*public void Save()
-		{
-			db.SaveChanges();
-		}
-		private bool disposed = false;
-		public virtual void Dispose(bool disposing)
-		{
-			if (!disposed)
-				if (disposing)
-					db.Dispose();
-			disposed = true;
-		}
-		public void Dispose()
-		{
-			Dispose(true);
-			GC.SuppressFinalize(this);
-		}*/
 	}
 }

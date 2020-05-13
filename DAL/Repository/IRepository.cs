@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-	interface IRepository<T> /*: IDisposable*/ where T: class
+	interface IRepository<T> where T: class
 	{
 		IEnumerable<T> GetList();
 		T GetItem (int id);
 		void Create (T item);
 		void Update (T item);
 		void Delete (int id);
-		//void Save ();
 	}
 }

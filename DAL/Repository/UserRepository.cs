@@ -7,51 +7,34 @@ using System.Data.Entity;
 
 namespace DAL
 {
-	class UserRepository : IRepository<Users>
+	class UserRepository : IRepository<User>
 	{
-		private VaultContext db;
-		public UserRepository(VaultContext context)
+		private PostContext db;
+		public UserRepository(PostContext context)
 		{
 			db = context;
 		}
-		public IEnumerable<Users> GetList()
+		public IEnumerable<User> GetList()
 		{
-			return db.Users;
+			return db.User;
 		}
-		public void Create(Users item)
+		public void Create(User item)
 		{
-			db.Users.Add(item);
+			db.User.Add(item);
 		}
 		public void Delete(int id)
 		{
-			Users usertodelete = db.Users.Find(id);
+			User usertodelete = db.User.Find(id);
 			if (usertodelete != null)
-				db.Users.Remove(usertodelete);
+				db.User.Remove(usertodelete);
 		}
-		public Users GetItem(int id)
+		public User GetItem(int id)
 		{
-			return db.Users.Find(id);
+			return db.User.Find(id);
 		}
-		public void Update(Users item)
+		public void Update(User item)
 		{
 			db.Entry(item).State = EntityState.Modified;
 		}
-		/*public void Save()
-		{
-			db.SaveChanges();
-		}
-		private bool disposed = false;
-		public virtual void Dispose (bool disposing)
-		{
-			if (!disposed)
-				if (disposing)
-					db.Dispose();
-			disposed = true;
-		}
-		public void Dispose()
-		{
-			Dispose(true);
-			GC.SuppressFinalize(this);
-		}*/
 	}
 }

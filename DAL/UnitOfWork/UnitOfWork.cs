@@ -8,10 +8,11 @@ namespace DAL.UnitOfWork
 {
 	class UnitOfWork : IDisposable
 	{
-		private VaultContext db;
+		private PostContext db;
 		private UserRepository userRepository;
-		private VaultRepository vaultRepository;
-		public UserRepository Users
+		private PostRepository postRepository;
+		private CommentRepository commentRepository;
+		public UserRepository User
 		{
 			get
 			{
@@ -20,13 +21,22 @@ namespace DAL.UnitOfWork
 				return userRepository;
 			}
 		}
-		public VaultRepository Vault
+		public PostRepository Post
 		{
 			get
 			{
-				if (vaultRepository == null)
-					vaultRepository = new VaultRepository(db);
-				return vaultRepository;
+				if (postRepository == null)
+					postRepository = new PostRepository(db);
+				return postRepository;
+			}
+		}
+		public CommentRepository Comment
+		{
+			get
+			{
+				if (commentRepository == null)
+					commentRepository = new CommentRepository(db);
+				return commentRepository;
 			}
 		}
 		public void Save()
